@@ -1,0 +1,12 @@
+---
+- name: debug module
+  hosts: all
+  vars:
+    fruit: "apple"
+  become_user: root
+  become: true
+  tasks:
+    - name: Print Message and Variable for Debug Module
+      ansible.builtin.debug:
+        msg: "our fruit is {{ fruit }}"
+        verbosity: 2

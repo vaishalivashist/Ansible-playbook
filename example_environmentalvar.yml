@@ -1,0 +1,14 @@
+---
+- name: Setting Environmental Variable
+  hosts: all
+  gather_facts: true
+  environment:
+    EXAMPLE: test1
+  tasks:
+    - name: display EXAMPLE
+      ansible.builtin.command: "echo $EXAMPLE"
+
+    - name: display EXAMPLE
+      ansible.builtin.command: "echo $EXAMPLE"
+      environment:
+        EXAMPLE: test2

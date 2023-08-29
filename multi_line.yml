@@ -1,0 +1,23 @@
+---
+- name: debug module
+  hosts: all
+  vars: 
+    variable1: |
+      wheels on the bus 
+      go round and round
+      round and round
+
+    variable2: >
+      Humpty Dumpty sat on a wall.
+      Humpty Dumpty had a great fall.
+      All the king’s horses and all the king’s men
+      couldn’t put Humpty together again.
+
+  tasks:
+    - name: print variable1
+      ansible.builtin.debug:
+        var: "{{ variable1.split('\n') }}"
+
+    - name: print variable2
+      ansible.builtin.debug:
+        var: variable2
