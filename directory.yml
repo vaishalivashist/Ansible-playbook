@@ -1,0 +1,14 @@
+---
+- name: creating multiple files and direcotry
+  hosts: all
+  become_user: root
+  become: true
+  tasks:
+    - name: creating directory
+      file:
+        path: "/tmp/ansible/"
+        state: directory
+        state: absent
+        owner: root
+        group: root
+        mode: '0755'

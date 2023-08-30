@@ -1,0 +1,44 @@
+---
+- name: creating multiple files and direcotry
+  hosts: all
+  become_user: root
+  become: true
+  tasks:
+    - name: creating directory
+      file:
+        path: "/tmp/ansible/content/"
+        state: directory
+        owner: root
+        group: root
+        mode: '0755'
+
+    - name: create multiple files
+      file:
+        path: "/tmp/ansible/content/{{ item }}"
+        state: touch
+        owner: root
+        group: root
+        mode: '0700'
+
+      with_items:
+      - test01.txt
+      - test02.txt
+      - test03.txt
+      - test04.txt
+        
+    - name: Add content on above files
+      copy:
+        dest: "/tmp/ansible/content/{{ item }}"
+        content: |
+          Computer’s history can trace back to the Abacus, a calculating tool of ancient times, which eventually gave way to the development
+          of the computer. The very first mechanical computer was developed in the 1820s by Charles Baggage, credited as the Father of the 
+          “Modern Computer.”” Later, in the 1930s, the first electronic computer was invented by Vannevar Bush in the United States.
+
+          The first programmable digital computer introduces in 1944 following a partnership between IBM and Harvard, which marked a 
+          revolutionizing era in the field of computers. Subsequently, many generations of computers followed, undergoing many significant changes.
+        
+      with_items:
+      - test01.txt
+      - test02.txt
+      - test03.txt
+      - test04.txt
