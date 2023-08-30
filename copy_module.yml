@@ -1,0 +1,10 @@
+---
+- name: copy files 
+  become: true
+  become_user: root
+  tasks:
+    name: copy files amonng different folder
+    ansible.builtin.copy:
+      src: /tmp/abc
+      dest: /tmp/xyz
+

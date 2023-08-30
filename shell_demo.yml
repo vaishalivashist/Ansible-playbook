@@ -1,0 +1,13 @@
+---
+- name: shell module demo
+  hosts: all
+  become_user: root
+  become: true
+  tasks: 
+    - name: list file(s) and folder(s)
+      ansible.builtin.shell: 'ls -l *' 
+      register: command_output
+
+    - name: command output
+      ansible.builtin.debug:
+        var: command_output.stdout_lines

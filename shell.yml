@@ -1,0 +1,9 @@
+---
+- name: this is for shell demo
+  hosts: all
+  tasks:
+    - name: this module is used for practising shell module
+      ansible.builtin.shell: 
+        cmd: test.sh
+
+
