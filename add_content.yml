@@ -1,0 +1,22 @@
+---
+- name: This playbook is for creating empty file.
+  hosts: all
+  become_user: root
+  become: true
+  tasks:
+    - name: file creation
+      file:
+        path: "/home/ec2-user/test_file.txt"
+        state: touch
+        owner: root
+        group: root
+        mode: '0777'
+
+    - name: Adding content to the file
+      copy:
+        dest: "/home/ec2-user/test_file.txt"
+        content: |
+          A quicker way is to use the copy module. Even though this module is used to copy a file from the 
+          control node to the remote host, you can include the content parameter to instantly add content 
+          to an empty file.
+

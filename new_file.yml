@@ -1,0 +1,16 @@
+---
+- name: This playbook is for creating empty file.
+  hosts: all
+  become_user: root
+  become: true
+  tasks:
+    - name: file creation
+      file:
+        path: "/tmp/test_file.txt"
+        state: touch
+        owner: root
+        group: root
+        mode: '0777'
+
+       
+    

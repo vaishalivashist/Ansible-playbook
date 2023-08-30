@@ -1,10 +1,14 @@
 ---
-- name: copy files 
+- name: copy files
+  hosts: all 
   become: true
   become_user: root
   tasks:
-    name: copy files amonng different folder
-    ansible.builtin.copy:
-      src: /tmp/abc
-      dest: /tmp/xyz
+    - name: copy files amonng different folder
+      copy:
+       src: /tmp/abc
+       dest: /tmp
+       owner: root
+       group: root
+       mode: 0755
 
