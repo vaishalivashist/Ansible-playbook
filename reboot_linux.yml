@@ -1,0 +1,14 @@
+# Paameters used: reboot_timeout,msg,reboot_command,pre_reboot_delay,post_reboot_delay,test_command,boot_time_command
+---
+- name: Reboot Remote hosts
+  hosts: all
+  become: true
+  tasks:
+    - name: reboot hosts
+      reboot:
+        msg: "reboot ansible host"
+        pre_reboot_delay: 5
+        post_reboot_delay: 10
+        test_command: "whoami"
+        
+

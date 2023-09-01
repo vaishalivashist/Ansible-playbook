@@ -1,0 +1,19 @@
+---
+- name: git module demo
+  hosts:
+  vars:
+    repo: "git@github.com:vaishalivashist/Ansible-playbook.git"
+    dest: "~/Ansible-playbook"
+    sshkey: "~/.ssh/id_rsa"
+  tasks:
+    - name: ensure git pkg installed
+      yum:
+        name: git
+        state: present
+        become: true
+
+     - name: checkout git repo
+       git:
+         repo: "{{ repo }}"
+         dest: "{{ dest }}"
+         key_file: "{{ sshkey }}"

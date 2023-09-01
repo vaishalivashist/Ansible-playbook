@@ -1,0 +1,30 @@
+---
+- name: Install httpd and start service
+  hosts: all
+  become: true
+  tasks:
+    - name: Installing httpd
+      yum:
+        name: httpd
+        state: present
+    - name: Start Services
+      service:
+        name: httpd
+        state: started
+        enabled: yes
+    - name: checking status
+      command:
+        cmd: systemctl status httpd
+
+    - name: create a simple html web page
+      copy:
+        content: "welcome to the ansible learning course module"
+        dest: /var/www/html/index.html
+
+           
+
+
+
+
+
+

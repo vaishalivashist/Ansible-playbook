@@ -6,9 +6,8 @@
   tasks:
     - name: copy files amonng different folder
       copy:
-       src: /tmp/abc
-       dest: /tmp
-       owner: root
-       group: root
-       mode: 0755
+       src: "/tmp/ansible/content/test01.txt"
+       dest: "/tmp/"
+     
+       
 

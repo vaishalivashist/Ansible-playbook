@@ -1,0 +1,13 @@
+#Main Parameters
+#path,line,insertafter/insertbefore,validate,create,state,mode/owner/group,setype/seuser/selevel
+---
+- name: Lineinfile module
+  hosts: all
+  become: true
+  tasks:
+    - name: allow password authentication
+      lineinfile:
+        state: present
+        dest: /etc/ssh/sshd_config
+        line: PasswordAuthentication yes
+        validate: 'sshd -t -f %s'

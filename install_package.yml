@@ -1,0 +1,26 @@
+#Package Installation and starting services 
+---
+- name: Latest Package Installation
+  hosts: all
+  vars:
+    packages:
+      - httpd
+      - postgresql
+      - vsftpd
+      
+  become_user: root
+  become: true
+  tasks:
+    - name: Install different packages
+      yum:
+        name: "{{ packages }}"
+        state: present
+      
+
+    - name: start services
+      service:
+        name: "{{ packages }}"
+        state: started
+        enabled: yes
+    
+
